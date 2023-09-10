@@ -1,7 +1,7 @@
 /*
     Author : RifatALmuiN
-    Problem : Greetings from LightOJ
-    Source : https://lightoj.com/problem/greetings-from-lightoj
+    Problem : Higher Math
+    Source : https://lightoj.com/problem/higher-math
 */
 
 #include <bits/stdc++.h>
@@ -9,12 +9,12 @@ using namespace std;
 #define FAST_IO ios_base::sync_with_stdio(false); cin.tie(NULL)
 typedef long long int ll;
 
-
 void solve()
 {
-    ll a, b;
-    cin>>a>>b;
-    cout<<a+b<<endl;
+    ll tri[3];
+    cin>>tri[0]>>tri[1]>>tri[2];
+    sort(tri,tri+3);
+    cout<<(tri[0]*tri[0]+tri[1]*tri[1] == tri[2]*tri[2] ? "yes\n" : "no\n");
 }
 
 int main()

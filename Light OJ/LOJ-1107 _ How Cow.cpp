@@ -1,7 +1,7 @@
 /*
     Author : RifatALmuiN
-    Problem : Greetings from LightOJ
-    Source : https://lightoj.com/problem/greetings-from-lightoj
+    Problem : How Cow
+    Source : https://lightoj.com/problem/how-cow
 */
 
 #include <bits/stdc++.h>
@@ -12,9 +12,12 @@ typedef long long int ll;
 
 void solve()
 {
-    ll a, b;
-    cin>>a>>b;
-    cout<<a+b<<endl;
+    int x1,x2,y1,y2,x,y,n;
+    cin>>x1>>y1>>x2>>y2>>n;
+    while(n--){
+        cin>>x>>y;
+        cout<<(x>x1 && x<x2 && y>y1 && y<y2 ? "Yes\n" : "No\n");
+    }
 }
 
 int main()
@@ -28,7 +31,7 @@ int main()
     cin >> t;
     while(t--)
     {
-        cout << "Case " << case_number++ << ": ";
+        cout << "Case " << case_number++ << ":\n";
         solve();
     }
     return 0;

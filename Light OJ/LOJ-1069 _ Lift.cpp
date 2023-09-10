@@ -1,7 +1,7 @@
 /*
     Author : RifatALmuiN
-    Problem : Greetings from LightOJ
-    Source : https://lightoj.com/problem/greetings-from-lightoj
+    Problem : Lift
+    Source : https://lightoj.com/problem/lift
 */
 
 #include <bits/stdc++.h>
@@ -12,9 +12,9 @@ typedef long long int ll;
 
 void solve()
 {
-    ll a, b;
-    cin>>a>>b;
-    cout<<a+b<<endl;
+    int p, lift;
+    cin>>p>>lift;
+    cout<< (p<=lift ? lift*4 + 19 : (2*p-lift)*4 + 19)<<endl;
 }
 
 int main()
