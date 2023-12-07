@@ -4,23 +4,25 @@ using namespace std;
 typedef long long int ll;
 long long int const MOD = 1e9 + 7;
 
-string str;
-void findNthDigit(int p, int q, int N)
+
+void solve() 
 {
-    int res;
-    while (N > 0) {
-        N--;
-        p *= 10;
-        res = p / q;
-        str.push_back(res + '0');
-        p %= q;
+    int n, m; cin >> n >> m;
+    int a[n + 1], b[m + 1];
+    for (int i = 1; i <= n; i++) {
+      cin >> a[i];
     }
-}
-void solve() {
-    int n, m;
-    cin >> n >> m;
-    findNthDigit(1, n, 1000000);
-    cout << str[m-1] << "\n";
+    int all = 0;
+    for (int i = 1; i <= m; i++) {
+      cin >> b[i];
+      all |= b[i];
+    }
+    int x = 0, y = 0;
+    for (int i = 1; i <= n; i++) {
+      x ^= a[i];
+      y ^= a[i] | all;
+    }
+    cout << min(x, y) << ' ' << max(x, y) << '\n';
 }
 
 int main()
@@ -33,7 +35,7 @@ int main()
     #endif
 
     int t = 1, case_number = 1;
-    //cin >> t;
+    cin >> t;
     while(t--)
     {
         //cout << "Case " << case_number++ << ":\n";
