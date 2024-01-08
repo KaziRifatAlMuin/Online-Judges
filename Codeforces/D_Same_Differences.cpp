@@ -8,7 +8,17 @@ int const N = 2e5 + 7;
 void solve()
 {
     int n; cin >> n;
-    cout << n + 1 << "\n";
+    vector<int> a(n);
+    for(int &x : a) cin >> x; //check
+    map<int, int> mp;
+    for(int i = 0; i < n; i++){
+        mp[a[i] - i]++;
+    }
+    ll ans = 0;
+    for(auto x : mp){
+        ans += (ll)x.second * (x.second - 1) / 2;
+    }
+    cout << ans << "\n";
 }
 
 int main()
