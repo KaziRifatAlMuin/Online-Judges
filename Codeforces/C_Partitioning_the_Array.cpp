@@ -7,33 +7,28 @@ int const N = 2e5 + 7;
 
 void solve()
 {
-    int n; cin >> n;
-    vector<int> a(n);
-    for(int &e : a) cin >> e;
-    vector <int> divisor;
-    for(int i = 2; i < sqrt(n) + 3; i++){
-        if(n % i == 0){
-            divisor.push_back(i);
-            if(i != n/i) divisor.push_back(n/i);
-        }
-    }
-    sort(divisor.begin(), divisor.end());
-    divisor.pop_back();
-    int ans = 1, m = 2;
-    for(auto d : divisor){
-        int len = n/d;
-        int flag = 1;
-        for(int i = 0; i < len && flag; i++){
-            for(int j = i; j < n; j += d){
-                if(a[i] != a[j] || (a[i] % m != (a[j] % m))){
-                    flag = 0;
-                    break;
+    int n, answer = 0; cin >> n;
+    vector<int>a(n);
+    for(auto &i : a) cin >> i;
+
+    for(int i = 1; i <= n; i++) {
+        if(n % i == 0) {
+
+            int k = n / i, g = 0;
+
+            for(int j = 0; j < k; j++) {
+                int diff = 0;
+                for(int l = j; l < n; l += k) {
+                    diff = __gcd(diff, abs(a[j] - a[l]));
                 }
+                g = __gcd(g, diff);
             }
+
+            answer += (g != 1);
         }
-        if(flag) ans++;
     }
-    cout << ans << "\n";
+
+    cout << answer << "\n";
 }
 
 int main()
