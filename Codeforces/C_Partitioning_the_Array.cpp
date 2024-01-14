@@ -7,28 +7,23 @@ int const N = 2e5 + 7;
 
 void solve()
 {
-    int n, answer = 0; cin >> n;
-    vector<int>a(n);
-    for(auto &i : a) cin >> i;
+    int n; 
+    cin >> n;
 
-    for(int i = 1; i <= n; i++) {
-        if(n % i == 0) {
-
-            int k = n / i, g = 0;
-
-            for(int j = 0; j < k; j++) {
-                int diff = 0;
-                for(int l = j; l < n; l += k) {
-                    diff = __gcd(diff, abs(a[j] - a[l]));
-                }
-                g = __gcd(g, diff);
-            }
-
-            answer += (g != 1);
+    int A[n];
+    for (int &i : A)
+        cin >> i;
+    
+    int ans = 0;
+    for (int k = 1; k <= n; k++){
+        if (n % k == 0){
+            int g = 0;
+            for (int i = 0; i + k < n; i++)
+                g = __gcd(g, abs(A[i + k] - A[i]));
+            ans += (g != 1);
         }
     }
-
-    cout << answer << "\n";
+    cout<<ans<<"\n";
 }
 
 int main()
