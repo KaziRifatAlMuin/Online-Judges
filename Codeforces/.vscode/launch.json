@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/User/OneDrive/Online Judges/Codeforces",
-      "program": "c:/Users/User/OneDrive/Online Judges/Codeforces/build/Debug/outDebug",
+      "cwd": "c:/Users/USER/OneDrive/Online Judges/Codeforces",
+      "program": "c:/Users/USER/OneDrive/Online Judges/Codeforces/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
