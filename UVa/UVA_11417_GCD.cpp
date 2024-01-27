@@ -7,15 +7,24 @@ int const N = 2e5 + 7;
 
 void solve()
 {
-    int n; cin >> n;
-    cout << n + 1 << "\n";
+    while(1){
+        ll n, gcd = 0;
+        cin >> n;
+        if(n == 0) break;
+        for(int i = 1; i < n; i++){
+            for(int j = i + 1; j <= n; j++){
+                gcd += __gcd(i,j);
+            }
+        }
+        cout << gcd << "\n";
+    }
 }
 
 int main()
 {
     ios_base::sync_with_stdio(false); cin.tie(NULL);
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while(t--){
         solve();
     }

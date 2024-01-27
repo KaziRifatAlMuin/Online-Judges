@@ -7,8 +7,10 @@ int const N = 2e5 + 7;
 
 void solve()
 {
-    int n; cin >> n;
-    cout << n + 1 << "\n";
+    ll gcd, lcm;
+    cin >> gcd >> lcm;
+    if(lcm % gcd != 0) cout << -1 << "\n";
+    else cout << gcd << " " << lcm << "\n";
 }
 
 int main()
