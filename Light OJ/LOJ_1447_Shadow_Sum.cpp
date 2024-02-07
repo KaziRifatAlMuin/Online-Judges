@@ -1,9 +1,3 @@
-/*
-    Author : RifatALmuiN
-    Problem : Shadow Sum
-    Source : https://lightoj.com/problem/shadow-sum
-*/
-
 #include <bits/stdc++.h>
 using namespace std;
 #define FAST_IO ios_base::sync_with_stdio(false); cin.tie(NULL)
