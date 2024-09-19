@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long int ll;
-typedef long double ld;
 long long int const MOD = 1e9 + 7;
 int const N = 2e5 + 7;
 #define PI acos(-1.0)
@@ -10,8 +9,8 @@ double area(double r , double angle){
     return 0.5*r*r*angle ;
 }
 
-double angle(double opp_A, double opp_B, double opp_C){
-    return acos( ( (opp_B*opp_B)+(opp_C*opp_C)-(opp_A*opp_A) ) / (2*opp_B*opp_C) ) ;
+double angle(double A, double B, double C){
+    return acos(((B*B)+(C*C)-(A*A)) / (2*B*C));
 }
 
 void solve()
