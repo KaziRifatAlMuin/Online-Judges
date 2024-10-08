@@ -6,11 +6,6 @@ Welcome to the **Online Judges** repository! This repository contains solutions 
 
 The repository is organized by platform, and within each platform, problems are further categorized by topic or algorithm type.
 
-
-- **Platform:** The online judge or platform where the problem was found (e.g., Codeforces, UVa).
-- **Topic:** The type of problem or algorithm used to solve it (e.g., Dynamic Programming, Graph Theory).
-- **Problem Name:** A folder for each problem that includes the source code (`solution.cpp`) and sometimes an explanation (`explanation.md`).
-
 ## Supported Platforms
 
 This repository currently contains solutions from the following platforms:
