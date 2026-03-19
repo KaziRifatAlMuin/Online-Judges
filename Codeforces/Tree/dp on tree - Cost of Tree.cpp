@@ -29,6 +29,7 @@ void dfs2(int u, int par = -1){
     for(auto v : G[u]){
         if(v == par) continue;
         dfs2(v, u);
+        // take best among: previous answer, best inside child, or cutting this child
         if(max_depth[v] != f) dp2[u] = max({dp2[u], dp2[v], sub[v] * (f+1-depth[v])});
         else dp2[u] = max({dp2[u], dp2[v], sub[v] * (s+1-depth[v])});
     }
