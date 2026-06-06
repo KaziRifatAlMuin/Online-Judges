@@ -1,0 +1,7 @@
+{
+  "scripts": {
+    "site:dev": "powershell -ExecutionPolicy Bypass -File tools/dev-site.ps1",
+    "site:update": "powershell -ExecutionPolicy Bypass -File tools/update-site-data.ps1",
+    "site:watch": "powershell -ExecutionPolicy Bypass -File tools/watch-site.ps1"
+  }
+}

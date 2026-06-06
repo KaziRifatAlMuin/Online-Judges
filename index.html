@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kazi Rifat Al Muin | Online Judge Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "ui-sans-serif", "system-ui"],
+              mono: ["JetBrains Mono", "Consolas", "monospace"]
+            },
+            colors: {
+              ink: "#111827",
+              panel: "#f8fafc",
+              line: "#d8dee8",
+              mint: "#0f766e",
+              coral: "#e11d48",
+              gold: "#b7791f",
+              sky: "#2563eb",
+              violet: "#7c3aed"
+            },
+            boxShadow: {
+              soft: "0 24px 70px rgba(17, 24, 39, 0.12)",
+              crisp: "0 10px 30px rgba(17, 24, 39, 0.08)"
+            }
+          }
+        }
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <script src="site-data.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-c.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-cpp.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-java.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+    <style>
+      * { box-sizing: border-box; }
+      html { overflow-x: hidden; }
+      body {
+        background:
+          linear-gradient(90deg, rgba(15, 118, 110, 0.11) 1px, transparent 1px),
+          linear-gradient(180deg, rgba(37, 99, 235, 0.08) 1px, transparent 1px),
+          radial-gradient(circle at 18% 8%, rgba(15, 118, 110, 0.22), transparent 32rem),
+          radial-gradient(circle at 90% 3%, rgba(225, 29, 72, 0.14), transparent 28rem),
+          linear-gradient(135deg, #f8fafc 0%, #eef2f7 46%, #f7f9fb 100%);
+        background-size: 42px 42px, 42px 42px, auto, auto, auto;
+      }
+      .glass { background: rgba(255, 255, 255, 0.76); backdrop-filter: blur(22px); }
+      .stat-card { position: relative; overflow: hidden; }
+      .stat-card::after {
+        background: rgba(255, 255, 255, 0.22);
+        border-radius: 999px;
+        content: "";
+        height: 92px;
+        position: absolute;
+        right: -28px;
+        top: -36px;
+        width: 92px;
+      }
+      .code-scroll { scrollbar-color: #14b8a6 #1f2937; scrollbar-width: thin; }
+      .code-scroll, pre[class*="language-"], code[class*="language-"] { max-width: 100%; }
+      .code-scroll::-webkit-scrollbar { height: 10px; width: 10px; }
+      .code-scroll::-webkit-scrollbar-thumb { background: #14b8a6; border-radius: 999px; }
+      .code-scroll::-webkit-scrollbar-track { background: #1f2937; }
+      pre[class*="language-"] { margin: 0; background: #101318; min-height: 100%; }
+      code[class*="language-"] { font-family: "JetBrains Mono", Consolas, monospace; font-size: 13px; line-height: 1.65; }
+    </style>
+  </head>
+  <body class="min-h-screen overflow-x-hidden text-ink antialiased">
+    <main class="mx-auto flex min-h-screen w-full max-w-[1480px] flex-col gap-5 px-3 py-3 sm:px-5 sm:py-5 lg:px-6">
+      <section class="grid min-w-0 gap-4 xl:grid-cols-[minmax(0,1.18fr)_minmax(0,0.82fr)]">
+        <div class="glass min-w-0 rounded-lg border border-white/80 p-4 shadow-soft sm:p-6">
+          <div class="flex flex-wrap items-start justify-between gap-4">
+            <div class="max-w-3xl">
+              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-mint sm:text-sm sm:tracking-[0.18em]">Competitive Programming Archive</p>
+              <h1 class="mt-2 text-3xl font-extrabold leading-tight sm:text-5xl lg:text-6xl">Kazi Rifat Al Muin</h1>
+              <p class="mt-3 max-w-2xl text-sm font-medium leading-6 text-slate-600 sm:text-base">
+                A searchable online judge solution library with live repository stats, folder insights, and highlighted source code.
+              </p>
+            </div>
+            <div class="rounded-lg border border-line bg-white/80 px-4 py-3 text-left shadow-crisp sm:text-right">
+              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Generated</p>
+              <p id="generatedAt" class="mt-1 text-sm font-bold">Loading</p>
+            </div>
+          </div>
+          <div class="mt-6 grid grid-cols-2 gap-2 sm:gap-3 lg:grid-cols-4">
+            <div class="stat-card rounded-lg bg-ink p-4 text-white shadow-crisp">
+              <p class="text-xs font-semibold uppercase tracking-[0.14em] text-white/55">Files</p>
+              <p id="totalFiles" class="mt-2 text-3xl font-extrabold">0</p>
+            </div>
+            <div class="stat-card rounded-lg bg-mint p-4 text-white shadow-crisp">
+              <p class="text-xs font-semibold uppercase tracking-[0.14em] text-white/70">Languages</p>
+              <p id="totalLanguages" class="mt-2 text-3xl font-extrabold">0</p>
+            </div>
+            <div class="stat-card rounded-lg bg-coral p-4 text-white shadow-crisp">
+              <p class="text-xs font-semibold uppercase tracking-[0.14em] text-white/70">Folders</p>
+              <p id="totalFolders" class="mt-2 text-3xl font-extrabold">0</p>
+            </div>
+            <div class="stat-card rounded-lg bg-gold p-4 text-white shadow-crisp">
+              <p class="text-xs font-semibold uppercase tracking-[0.14em] text-white/70">Size</p>
+              <p id="totalSize" class="mt-2 text-3xl font-extrabold">0</p>
+            </div>
+          </div>
+          <div class="mt-4 rounded-lg border border-line bg-white/75 p-4 shadow-crisp">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <div>
+                <p class="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">All folders at once</p>
+                <p id="folderOverview" class="mt-1 text-lg font-extrabold">Loading folder spread</p>
+              </div>
+              <span id="folderDensity" class="rounded-full bg-ink px-3 py-1 text-xs font-bold text-white">0 files/folder</span>
+            </div>
+            <div id="folderPills" class="mt-3 flex max-w-full gap-2 overflow-x-auto pb-1"></div>
+          </div>
+        </div>
+        <div class="glass min-w-0 rounded-lg border border-white/80 p-4 shadow-soft sm:p-5">
+          <div class="flex items-center justify-between gap-3">
+            <h2 class="text-lg font-extrabold">Folder Distribution</h2>
+            <span id="topFolder" class="rounded-full bg-ink px-3 py-1 text-xs font-bold text-white">Top</span>
+          </div>
+          <div class="mt-4 h-56 sm:h-64">
+            <canvas id="folderChart" aria-label="Folder statistics chart"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid min-h-[680px] min-w-0 gap-4 xl:grid-cols-[330px_minmax(0,1fr)] 2xl:grid-cols-[350px_minmax(0,1fr)]">
+        <aside class="glass rounded-lg border border-white/80 p-4 shadow-soft xl:sticky xl:top-4 xl:max-h-[calc(100vh-2rem)] xl:overflow-hidden">
+          <div class="space-y-3">
+            <div>
+              <label for="searchInput" class="mb-1 block text-xs font-bold uppercase tracking-[0.14em] text-slate-500">Search</label>
+              <input id="searchInput" class="w-full rounded-lg border border-line bg-white px-3 py-2.5 text-sm font-medium outline-none ring-mint/25 transition focus:border-mint focus:ring-4" placeholder="Problem, folder, or language" />
+            </div>
+            <div class="grid gap-2 sm:grid-cols-2 xl:grid-cols-2">
+              <div>
+                <label for="folderSelect" class="mb-1 block text-xs font-bold uppercase tracking-[0.14em] text-slate-500">Folder</label>
+                <select id="folderSelect" class="w-full rounded-lg border border-line bg-white px-3 py-2.5 text-sm font-semibold outline-none ring-mint/25 focus:border-mint focus:ring-4"></select>
+              </div>
+              <div>
+                <label for="languageSelect" class="mb-1 block text-xs font-bold uppercase tracking-[0.14em] text-slate-500">Language</label>
+                <select id="languageSelect" class="w-full rounded-lg border border-line bg-white px-3 py-2.5 text-sm font-semibold outline-none ring-mint/25 focus:border-mint focus:ring-4"></select>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-5">
+            <div class="flex items-center justify-between">
+              <h2 class="text-sm font-extrabold uppercase tracking-[0.14em] text-slate-600">Folders</h2>
+              <span id="visibleCount" class="text-sm font-bold text-mint">0</span>
+            </div>
+            <div id="folderStats" class="mt-3 max-h-64 space-y-2 overflow-auto pr-1 xl:max-h-72"></div>
+          </div>
+
+          <div class="mt-5">
+            <h2 class="text-sm font-extrabold uppercase tracking-[0.14em] text-slate-600">Files</h2>
+            <div id="fileList" class="mt-3 max-h-[420px] space-y-2 overflow-auto pr-1 xl:max-h-[calc(100vh-31rem)]"></div>
+          </div>
+        </aside>
+
+        <section class="glass flex min-w-0 flex-col overflow-hidden rounded-lg border border-white/80 shadow-soft">
+          <div class="flex flex-wrap items-center justify-between gap-3 border-b border-line p-4">
+            <div class="min-w-0">
+              <p id="selectedMeta" class="text-xs font-bold uppercase tracking-[0.14em] text-mint">Select a file</p>
+              <h2 id="selectedTitle" class="truncate text-xl font-extrabold">Code viewer</h2>
+            </div>
+            <div class="flex shrink-0 items-center gap-2">
+              <button id="copyButton" class="rounded-lg bg-ink px-4 py-2 text-sm font-bold text-white transition hover:bg-mint">Copy</button>
+              <a id="openRawLink" class="rounded-lg border border-line bg-white px-4 py-2 text-sm font-bold transition hover:border-mint hover:text-mint" href="#" target="_blank" rel="noreferrer">Raw</a>
+            </div>
+          </div>
+          <div class="grid min-w-0 gap-0 lg:grid-cols-[minmax(0,1fr)_240px] 2xl:grid-cols-[minmax(0,1fr)_260px]">
+            <div class="min-w-0 max-w-full overflow-hidden bg-ink lg:rounded-bl-lg">
+              <pre class="code-scroll max-h-[660px] overflow-auto p-0"><code id="codeBlock" class="language-cpp"></code></pre>
+            </div>
+            <div class="border-t border-line bg-white/55 p-4 lg:border-l lg:border-t-0">
+              <h3 class="text-sm font-extrabold uppercase tracking-[0.14em] text-slate-600">File Stats</h3>
+              <dl class="mt-4 grid grid-cols-2 gap-3 text-sm lg:grid-cols-1">
+                <div class="rounded-lg border border-line bg-white p-3">
+                  <dt class="text-xs font-bold uppercase tracking-[0.12em] text-slate-500">Lines</dt>
+                  <dd id="fileLines" class="mt-1 text-2xl font-extrabold">0</dd>
+                </div>
+                <div class="rounded-lg border border-line bg-white p-3">
+                  <dt class="text-xs font-bold uppercase tracking-[0.12em] text-slate-500">Size</dt>
+                  <dd id="fileSize" class="mt-1 text-2xl font-extrabold">0</dd>
+                </div>
+                <div class="rounded-lg border border-line bg-white p-3">
+                  <dt class="text-xs font-bold uppercase tracking-[0.12em] text-slate-500">Language</dt>
+                  <dd id="fileLanguage" class="mt-1 text-lg font-extrabold">cpp</dd>
+                </div>
+                <div class="rounded-lg border border-line bg-white p-3">
+                  <dt class="text-xs font-bold uppercase tracking-[0.12em] text-slate-500">Modified</dt>
+                  <dd id="fileModified" class="mt-1 text-sm font-bold">-</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script>
+      let repo = window.REPO_DATA || { files: [], totalFiles: 0, totalLines: 0, totalSize: 0, generatedAt: new Date().toISOString() };
+      const state = {
+        query: "",
+        folder: "all",
+        language: "all",
+        selectedPath: repo.files[0]?.path || ""
+      };
+
+      const $ = (id) => document.getElementById(id);
+      const formatter = new Intl.NumberFormat();
+      const dateFormatter = new Intl.DateTimeFormat(undefined, { dateStyle: "medium", timeStyle: "short" });
+      const contentCache = new Map();
+      let loadToken = 0;
+
+      function formatBytes(bytes) {
+        if (!bytes) return "0 B";
+        const units = ["B", "KB", "MB", "GB"];
+        const power = Math.min(Math.floor(Math.log(bytes) / Math.log(1024)), units.length - 1);
+        return `${(bytes / Math.pow(1024, power)).toFixed(power ? 1 : 0)} ${units[power]}`;
+      }
+
+      function escapeHtml(value) {
+        return String(value)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;");
+      }
+
+      function getFolderStats(files = repo.files) {
+        return [...files.reduce((map, file) => {
+          const item = map.get(file.folder) || { folder: file.folder, files: 0, lines: 0, size: 0 };
+          item.files += 1;
+          item.lines += file.lines;
+          item.size += file.size;
+          map.set(file.folder, item);
+          return map;
+        }, new Map()).values()].sort((a, b) => b.files - a.files);
+      }
+
+      function getFilteredFiles() {
+        const needle = state.query.trim().toLowerCase();
+        return repo.files.filter((file) => {
+          const matchesSearch = !needle || [file.name, file.path, file.directory, file.language].some((field) => String(field).toLowerCase().includes(needle));
+          const matchesFolder = state.folder === "all" || file.folder === state.folder;
+          const matchesLanguage = state.language === "all" || file.language === state.language;
+          return matchesSearch && matchesFolder && matchesLanguage;
+        });
+      }
+
+      function fillSelects() {
+        const selectedFolder = state.folder;
+        const selectedLanguage = state.language;
+        const folders = ["all", ...new Set(repo.files.map((file) => file.folder))].sort((a, b) => a === "all" ? -1 : b === "all" ? 1 : a.localeCompare(b));
+        const languages = ["all", ...new Set(repo.files.map((file) => file.language))].sort((a, b) => a === "all" ? -1 : b === "all" ? 1 : a.localeCompare(b));
+        $("folderSelect").innerHTML = folders.map((folder) => `<option value="${folder}">${folder === "all" ? "All" : folder}</option>`).join("");
+        $("languageSelect").innerHTML = languages.map((language) => `<option value="${language}">${language === "all" ? "All" : language}</option>`).join("");
+        state.folder = folders.includes(selectedFolder) ? selectedFolder : "all";
+        state.language = languages.includes(selectedLanguage) ? selectedLanguage : "all";
+        $("folderSelect").value = state.folder;
+        $("languageSelect").value = state.language;
+      }
+
+      function renderFolderOverview() {
+        const stats = getFolderStats(repo.files);
+        const folderCount = stats.length;
+        const biggest = stats[0];
+        const average = folderCount ? repo.totalFiles / folderCount : 0;
+        $("folderOverview").textContent = `${formatter.format(folderCount)} folders hold ${formatter.format(repo.totalFiles)} files`;
+        $("folderDensity").textContent = `${average.toFixed(1)} files/folder`;
+        $("folderPills").innerHTML = stats.map((item, index) => {
+          const colors = ["bg-mint", "bg-coral", "bg-gold", "bg-sky", "bg-violet", "bg-ink"];
+          const width = biggest ? Math.max(18, (item.files / biggest.files) * 100) : 18;
+          return `
+            <button class="min-w-[142px] max-w-[180px] rounded-lg border border-line bg-white p-3 text-left shadow-crisp transition hover:-translate-y-0.5 hover:border-mint sm:min-w-[154px]" data-folder="${item.folder}">
+              <span class="block truncate text-sm font-extrabold">${item.folder}</span>
+              <span class="mt-1 block text-xs font-bold text-slate-500">${item.files} files / ${formatBytes(item.size)}</span>
+              <span class="mt-3 block h-1.5 overflow-hidden rounded-full bg-slate-200">
+                <span class="block h-full rounded-full ${colors[index % colors.length]}" style="width:${width}%"></span>
+              </span>
+            </button>
+          `;
+        }).join("");
+
+        $("folderPills").querySelectorAll("button").forEach((button) => {
+          button.addEventListener("click", () => {
+            state.folder = button.dataset.folder;
+            $("folderSelect").value = state.folder;
+            render();
+          });
+        });
+      }
+
+      let folderChart;
+      function renderChart(files = repo.files) {
+        const stats = getFolderStats(files).slice(0, 8);
+        $("topFolder").textContent = stats[0] ? `${stats[0].folder}: ${stats[0].files}` : "Top";
+        if (folderChart) folderChart.destroy();
+        folderChart = new Chart($("folderChart"), {
+          type: "doughnut",
+          data: {
+            labels: stats.map((item) => item.folder),
+            datasets: [{
+              data: stats.map((item) => item.files),
+              backgroundColor: ["#0f766e", "#e11d48", "#b7791f", "#111827", "#2563eb", "#7c3aed", "#0891b2", "#65a30d"],
+              borderColor: "#f8fafc",
+              borderWidth: 4,
+              hoverOffset: 8
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                position: "bottom",
+                labels: { boxWidth: 10, usePointStyle: true, font: { family: "Inter", weight: 700 } }
+              }
+            },
+            cutout: "62%"
+          }
+        });
+      }
+
+      function renderFolderStats(files) {
+        const allStats = getFolderStats(repo.files);
+        const maxFiles = Math.max(1, ...allStats.map((item) => item.files));
+        $("folderStats").innerHTML = allStats.map((item) => {
+          const isActive = state.folder === item.folder;
+          return `
+            <button class="w-full rounded-lg border ${isActive ? "border-mint bg-mint/10" : "border-line bg-white/70"} p-3 text-left transition hover:border-mint" data-folder="${item.folder}">
+              <div class="flex items-center justify-between gap-2">
+                <span class="truncate text-sm font-extrabold">${item.folder}</span>
+                <span class="text-xs font-bold text-slate-500">${item.files} files</span>
+              </div>
+              <div class="mt-2 h-2 overflow-hidden rounded-full bg-slate-200">
+                <div class="h-full rounded-full bg-mint" style="width:${Math.max(4, (item.files / maxFiles) * 100)}%"></div>
+              </div>
+            </button>
+          `;
+        }).join("");
+
+        $("folderStats").querySelectorAll("button").forEach((button) => {
+          button.addEventListener("click", () => {
+            state.folder = button.dataset.folder;
+            $("folderSelect").value = state.folder;
+            render();
+          });
+        });
+      }
+
+      function renderFileList(files) {
+        $("visibleCount").textContent = `${formatter.format(files.length)} shown`;
+        $("fileList").innerHTML = files.map((file) => {
+          const active = file.path === state.selectedPath;
+          return `
+            <button class="w-full rounded-lg border ${active ? "border-mint bg-ink text-white" : "border-line bg-white/75"} p-3 text-left transition hover:border-mint" data-path="${file.path}">
+              <span class="block truncate text-sm font-extrabold">${file.name}</span>
+              <span class="mt-1 block truncate text-xs font-semibold ${active ? "text-white/65" : "text-slate-500"}">${file.directory}</span>
+              <span class="mt-2 flex items-center justify-between text-xs font-bold ${active ? "text-white/70" : "text-slate-500"}">
+                <span>${file.language}</span>
+                <span>${formatBytes(file.size)}</span>
+              </span>
+            </button>
+          `;
+        }).join("");
+
+        $("fileList").querySelectorAll("button").forEach((button) => {
+          button.addEventListener("click", () => {
+            state.selectedPath = button.dataset.path;
+            render();
+          });
+        });
+      }
+
+      function selectFile(files) {
+        const current = repo.files.find((file) => file.path === state.selectedPath);
+        if (current && files.some((file) => file.path === current.path)) return current;
+        const next = files[0] || repo.files[0];
+        state.selectedPath = next?.path || "";
+        return next;
+      }
+
+      function toFetchPath(path) {
+        return path.split("/").map(encodeURIComponent).join("/");
+      }
+
+      async function loadContent(file) {
+        if (contentCache.has(file.path)) return contentCache.get(file.path);
+        const response = await fetch(toFetchPath(file.path), { cache: "no-store" });
+        if (!response.ok) throw new Error(`Unable to load ${file.path}`);
+        const content = await response.text();
+        contentCache.set(file.path, content);
+        return content;
+      }
+
+      async function renderSelectedFile(file) {
+        const token = ++loadToken;
+        if (!file) {
+          $("selectedTitle").textContent = "No files found";
+          $("selectedMeta").textContent = "Adjust filters";
+          $("codeBlock").textContent = "";
+          return;
+        }
+
+        $("selectedTitle").textContent = file.name;
+        $("selectedMeta").textContent = file.path;
+        $("fileLines").textContent = "Loading";
+        $("fileSize").textContent = formatBytes(file.size);
+        $("fileLanguage").textContent = file.language;
+        $("fileModified").textContent = dateFormatter.format(new Date(file.modified));
+        $("openRawLink").href = file.path;
+
+        const codeBlock = $("codeBlock");
+        codeBlock.className = `language-${file.language}`;
+        codeBlock.textContent = "Loading code...";
+
+        try {
+          const content = await loadContent(file);
+          if (token !== loadToken) return;
+          const lines = content ? content.split(/\r\n|\n|\r/).length : 0;
+          $("fileLines").textContent = formatter.format(lines);
+          codeBlock.innerHTML = escapeHtml(content);
+          Prism.highlightElement(codeBlock);
+        } catch (error) {
+          if (token !== loadToken) return;
+          $("fileLines").textContent = "-";
+          codeBlock.textContent = "Could not load this file. Open the Raw link or serve the repository with a local web server.";
+        }
+      }
+
+      function render() {
+        const files = getFilteredFiles();
+        const selected = selectFile(files);
+        renderChart(files);
+        renderFolderStats(files);
+        renderFileList(files);
+        renderSelectedFile(selected);
+      }
+
+      function renderTotals() {
+        $("generatedAt").textContent = dateFormatter.format(new Date(repo.generatedAt));
+        $("totalFiles").textContent = formatter.format(repo.totalFiles);
+        $("totalLanguages").textContent = formatter.format(new Set(repo.files.map((file) => file.language)).size);
+        $("totalFolders").textContent = formatter.format(new Set(repo.files.map((file) => file.folder)).size);
+        $("totalSize").textContent = formatBytes(repo.totalSize);
+      }
+
+      function renderEverything() {
+        renderTotals();
+        fillSelects();
+        renderFolderOverview();
+        render();
+      }
+
+      function parseRepoData(scriptText) {
+        const jsonText = scriptText.replace(/^\uFEFF?window\.REPO_DATA\s*=\s*/, "").replace(/;\s*$/, "");
+        return JSON.parse(jsonText);
+      }
+
+      async function pollForRepositoryUpdates() {
+        try {
+          const response = await fetch(`site-data.js?ts=${Date.now()}`, { cache: "no-store" });
+          if (!response.ok) return;
+          const nextRepo = parseRepoData(await response.text());
+          if (nextRepo.generatedAt === repo.generatedAt && nextRepo.totalFiles === repo.totalFiles && nextRepo.totalSize === repo.totalSize) {
+            return;
+          }
+
+          repo = nextRepo;
+          contentCache.clear();
+          if (!repo.files.some((file) => file.path === state.selectedPath)) {
+            state.selectedPath = repo.files[0]?.path || "";
+          }
+          renderEverything();
+        } catch (error) {
+          // The page can still be used if polling fails, for example when opened directly from the filesystem.
+        }
+      }
+
+      $("searchInput").addEventListener("input", (event) => {
+        state.query = event.target.value;
+        render();
+      });
+
+      $("folderSelect").addEventListener("change", (event) => {
+        state.folder = event.target.value;
+        render();
+      });
+
+      $("languageSelect").addEventListener("change", (event) => {
+        state.language = event.target.value;
+        render();
+      });
+
+      $("copyButton").addEventListener("click", async () => {
+        const file = repo.files.find((item) => item.path === state.selectedPath);
+        if (!file) return;
+        const content = await loadContent(file);
+        await navigator.clipboard.writeText(content);
+        $("copyButton").textContent = "Copied";
+        setTimeout(() => $("copyButton").textContent = "Copy", 1000);
+      });
+
+      renderEverything();
+      setInterval(pollForRepositoryUpdates, 5000);
+    </script>
+  </body>
+</html>
